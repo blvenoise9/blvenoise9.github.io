@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes & Food Access Analysis - Rita Xiong</title>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-detail {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .project-hero-image {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 2rem auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .meta-item h4 {
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .meta-item p {
+            color: #d1d5db;
+            margin: 0;
+        }
+        
+        .project-section {
+            margin-bottom: 3rem;
+        }
+        
+        .project-section h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .project-section h4 {
+            color: #3b82f6;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .project-section p, .project-section li {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .project-section ul {
+            padding-left: 2rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: #2563eb;
+            transform: translateX(-5px);
+        }
+        
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .data-sources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .data-source-card {
+            background: rgba(17, 24, 39, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .data-source-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+        
+        .data-source-card h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .finding-card {
+            background: rgba(17, 24, 39, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .finding-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+        
+        .finding-card h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .correlation-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .model-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .model-card {
+            background: rgba(17, 24, 39, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .model-card h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-value {
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        @media (max-width: 768px) {
+            .project-content {
+                padding: 2rem 1.5rem;
+                margin: 0 20px;
+            }
+            
+            .back-button {
+                left: 20px;
+                padding: 10px 16px;
+            }
+            
+            .project-hero-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Star Background -->
+    <div class="star-background"></div>
+
+    <!-- Back Button -->
+    <a href="index.html#projects" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="section-title">Diabetes & Food Access Analysis</h1>
+                <p class="section-subtitle">Understanding How Food Accessibility Impacts Diabetes Rates Across U.S. Counties</p>
+                <img src="images/diabetes_food.png" alt="Diabetes and Food Access Analysis" class="project-hero-image">
+            </div>
+            
+            <div class="project-content">
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Project Type</h4>
+                        <p>Public Health Data Analysis</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Data Sources</h4>
+                        <p>County Health Rankings & USDA Food Access</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Analysis Methods</h4>
+                        <p>EDA, IV Regression, Logistic Regression</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Tools Used</h4>
+                        <p>Python, Pandas, Scikit-learn, Matplotlib</p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Project Overview</h3>
+                    <p>
+                        This project analyzes U.S. county health rankings and USDA food access research data to understand how food accessibility impacts diabetes rates across different communities. Access to healthy food is vital for human health, yet millions of Americans live in food deserts—areas where fresh, nutritious food is difficult to obtain.
+                    </p>
+                    <p>
+                        When people lack access to affordable, healthy food options, they often resort to processed, high-calorie foods, which increases their risk of developing Type 2 diabetes. This study examines the correlation between food accessibility and diabetes rates, illuminating the broader implications of food access disparities, wealth inequality, and public health.
+                    </p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Research Question</h4>
+                    <p>
+                        How does food accessibility impact diabetes rates across U.S. counties, and what role do socioeconomic factors play in this relationship?
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Data Sources</h3>
+                    <div class="data-sources">
+                        <div class="data-source-card">
+                            <h4>2019 County Health Rankings</h4>
+                            <p>
+                                Health outcomes, behaviors, and demographics for approximately 3,100 U.S. counties, providing comprehensive county-level health data.
+                            </p>
+                        </div>
+                        <div class="data-source-card">
+                            <h4>2019 USDA Food Access Research Atlas</h4>
+                            <p>
+                                Food accessibility and socioeconomic indicators for approximately 72,000 census tracts, detailing food desert characteristics.
+                            </p>
+                        </div>
+                    </div>
+                    <p>
+                        Both datasets were downloaded as CSV files, cleaned, and merged in Python via county name. Data processing involved filtering unnecessary columns, converting "Null" values, and transforming demographic metrics into percentages. A composite food access risk score was created by combining indicators like low-income, low-access, and vehicle availability.
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Key Findings from Exploratory Data Analysis</h3>
+                    
+                    <h4>Correlation Heatmap Analysis</h4>
+                    <p>
+                        The correlation heatmap reveals the relationships between all non-categorical variables in our dataset, providing crucial insights into how different factors relate to diabetes rates across U.S. counties.
+                    </p>
+                    
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <img src="images/heatmap-df.png" alt="Correlation Heatmap of Health and Socioeconomic Factors" style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border: 2px solid rgba(59, 130, 246, 0.3);">
+                        <p style="color: #9ca3af; font-size: 0.9rem; margin-top: 1rem; font-style: italic;">
+                            Correlation heatmap showing relationships between diabetes rates and various health, socioeconomic, and food access factors
+                        </p>
+                    </div>
+                    
+                    <div class="findings-grid">
+                        <div class="finding-card">
+                            <h4>Physical Inactivity</h4>
+                            <div class="correlation-value">0.81</div>
+                            <p>Strong positive correlation with diabetes rates, indicating lifestyle factors play a crucial role.</p>
+                        </div>
+                        <div class="finding-card">
+                            <h4>Obesity Rate</h4>
+                            <div class="correlation-value">0.76</div>
+                            <p>Strong positive correlation, closely linked with physical inactivity patterns.</p>
+                        </div>
+                        <div class="finding-card">
+                            <h4>Food Environment Index</h4>
+                            <div class="correlation-value">-0.51</div>
+                            <p>Medium negative correlation - better food environments correlate with lower diabetes rates.</p>
+                        </div>
+                        <div class="finding-card">
+                            <h4>Food Insecurity</h4>
+                            <div class="correlation-value">0.48</div>
+                            <p>Medium positive correlation, showing food access significantly impacts diabetes prevalence.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Distribution Analysis</h4>
+                    <p>
+                        The histogram analysis revealed that food insecurity and limited access to healthy foods are not evenly distributed across counties. This indicates that some states or counties have much worse food access, making them potential high-risk diabetes areas. Poverty and food access are strongly right-skewed, meaning that some counties suffer from extreme poverty and food insecurity, which likely contributes to higher diabetes rates.
+                    </p>
+                    
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <img src="images/hist-df.png" alt="Distribution of Key Health and Socioeconomic Indicators" style="width: 100%; max-width: 900px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border: 2px solid rgba(59, 130, 246, 0.3);">
+                        <p style="color: #9ca3af; font-size: 0.9rem; margin-top: 1rem; font-style: italic;">
+                            Histogram distributions showing the spread of diabetes rates, food access indicators, and socioeconomic factors across counties
+                        </p>
+                    </div>
+                    
+                    <h4>Food Access Risk Levels</h4>
+                    <p>
+                        The boxplot analysis showed a clear upward trend in diabetes rates as food access risk levels increased. This indicates a strong correlation between higher food access risk levels and higher diabetes rates, confirming that regions with low food access correlate with higher diabetes prevalence.
+                    </p>
+                    
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <img src="images/box-df.png" alt="Diabetes Rates by Food Access Risk Level" style="width: 100%; max-width: 700px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border: 2px solid rgba(59, 130, 246, 0.3);">
+                        <p style="color: #9ca3af; font-size: 0.9rem; margin-top: 1rem; font-style: italic;">
+                            Boxplot showing the relationship between food access risk levels and diabetes rates across counties
+                        </p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>Boxplot Analysis Reveals</h4>
+                        <p>
+                            The boxplot demonstrates a clear upward trend in diabetes rates as food access risk increases from low to high levels. This visual evidence strongly supports our hypothesis that food accessibility is a significant predictor of diabetes prevalence at the county level. The increasing median values and widening distributions at higher risk levels indicate both higher average diabetes rates and greater variability in outcomes for food-insecure areas.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Instrumental Variable (IV) Regression Analysis</h3>
+                    <p>
+                        To address potential endogeneity concerns—the correlation between predictors and unexplained variation in the dependent variable—we implemented an IV regression model.
+                    </p>
+                    
+                    <h4>Methodology</h4>
+                    <ul>
+                        <li><strong>Data Grouping:</strong> Clustered states into four regions (West, South, Northeast, Midwest) to capture larger regional trends</li>
+                        <li><strong>Variable Selection:</strong> Used LassoCV algorithm with 5-fold cross-validation to identify 14 key predictors</li>
+                        <li><strong>Endogeneity Testing:</strong> Performed Durbin-Wu-Hausman Test on the obesity-food insecurity interaction term</li>
+                        <li><strong>Instruments:</strong> Used 'Seniors_pct', 'Urban', and 'SNAP_rate' as instrumental variables</li>
+                    </ul>
+                    
+                    <div class="model-results">
+                        <div class="model-card">
+                            <h4>IV-2SLS Model Results</h4>
+                            <div class="metric">
+                                <span>R-squared:</span>
+                                <span class="metric-value">0.3160</span>
+                            </div>
+                            <div class="metric">
+                                <span>F-statistic:</span>
+                                <span class="metric-value">7.054e+04</span>
+                            </div>
+                            <div class="metric">
+                                <span>P-value:</span>
+                                <span class="metric-value">&lt; 0.0001</span>
+                            </div>
+                            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                                The model explains 31.6% of variation in diabetes rates and is highly statistically significant.
+                            </p>
+                        </div>
+                        <div class="model-card">
+                            <h4>Key Predictor: Obesity-Food Insecurity</h4>
+                            <div class="metric">
+                                <span>Coefficient:</span>
+                                <span class="metric-value">1.8227</span>
+                            </div>
+                            <div class="metric">
+                                <span>P-value:</span>
+                                <span class="metric-value">&lt; 0.0001</span>
+                            </div>
+                            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                                A one-unit increase in the obesity-food insecurity interaction is associated with a 1.82-unit increase in diabetes rate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Logistic Regression Analysis</h3>
+                    <p>
+                        We developed a logistic regression model to predict high diabetes risk at the county level, transforming diabetes rates into a binary outcome to assess the likelihood of higher diabetes risk based on food access and socioeconomic factors.
+                    </p>
+                    
+                    <div class="model-results">
+                        <div class="model-card">
+                            <h4>Model Performance</h4>
+                            <div class="metric">
+                                <span>AUC Score:</span>
+                                <span class="metric-value">0.82</span>
+                            </div>
+                            <div class="metric">
+                                <span>Accuracy:</span>
+                                <span class="metric-value">74.4%</span>
+                            </div>
+                            <div class="metric">
+                                <span>Precision:</span>
+                                <span class="metric-value">0.72</span>
+                            </div>
+                            <div class="metric">
+                                <span>Recall:</span>
+                                <span class="metric-value">0.78</span>
+                            </div>
+                        </div>
+                        <div class="model-card">
+                            <h4>Key Insights</h4>
+                            <ul style="margin: 0; padding-left: 1rem; font-size: 0.9rem;">
+                                <li>Limited access to healthy foods increases diabetes odds by 40%</li>
+                                <li>Higher median family income strongly reduces diabetes risk</li>
+                                <li>SNAP enrollment is associated with 13.7% higher diabetes odds</li>
+                                <li>Senior population increases diabetes risk by 19.4%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Demographic Patterns</h4>
+                    <p>
+                        The analysis revealed distinct demographic patterns: counties with higher percentages of Black residents exhibited a 16.9% increase in the odds of diabetes prevalence, while higher percentages of Hispanic and Asian populations were associated with 58% and 35% lower odds, respectively. These findings highlight significant health disparities, potentially reflecting differences in lifestyle, diet, healthcare access, or community resources across ethnic groups.
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Literature Review Context</h3>
+                    <p>
+                        Our findings align with existing research on food accessibility and diabetes. Previous studies have shown that food insecurity is linked to higher HbA1c levels and poorer blood sugar management, while neighborhood socioeconomic environments significantly impact Type 2 diabetes risk. However, our research extends this understanding by quantifying the specific relationships between food access metrics and diabetes prevalence at the county level.
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Tools & Technologies</h3>
+                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start; margin-top: 1rem;">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                        <span class="tech-tag">Statsmodels</span>
+                        <span class="tech-tag">IV Regression</span>
+                        <span class="tech-tag">Logistic Regression</span>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Conclusions & Policy Implications</h4>
+                    <p>
+                        Our analysis confirms that food accessibility plays a major role in diabetes rates across the U.S. Counties with limited access to healthy food consistently show higher diabetes prevalence, reinforcing the broader impact of food deserts on public health. The research points to the need for practical solutions: expanding food assistance programs, improving access to grocery stores, and addressing economic disparities to help reduce diabetes rates and promote healthier communities.
+                    </p>
+                    <p>
+                        While our models capture strong predictors, they suggest that additional factors—such as healthcare access, education, and lifestyle choices—also contribute to diabetes prevalence. Future research should incorporate these elements to develop more comprehensive intervention strategies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rita Xiong. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="Kaggle">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+                <a href="#" aria-label="Medium">
+                    <i class="fab fa-medium"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLab Research Project - Rita Xiong Portfolio</title>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-detail {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .project-hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.8);
+            border-radius: 12px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .meta-item h4 {
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .meta-item p {
+            color: #d1d5db;
+            margin: 0;
+        }
+        
+        .project-section {
+            margin-bottom: 3rem;
+        }
+        
+        .project-section h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .project-section p, .project-section li {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .project-section ul {
+            padding-left: 2rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: #2563eb;
+            transform: translateX(-5px);
+        }
+        
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            color: #e5e7eb;
+        }
+        
+        @media (max-width: 768px) {
+            .project-content {
+                padding: 2rem 1.5rem;
+                margin: 0 20px;
+            }
+            
+            .back-button {
+                left: 20px;
+                padding: 10px 16px;
+            }
+            
+            .project-hero-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Star Background -->
+    <div class="star-background"></div>
+
+    <!-- Back Button -->
+    <a href="index.html#projects" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="section-title">JLab Audio Analytics Project</h1>
+                <p class="section-subtitle">Customer Retention & Data-Driven Marketing Strategy for Audio Technology Company</p>
+                <div class="project-hero-image" style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%); display: flex; align-items: center; justify-content: center;">
+                    <img src="images/JLab.png" alt="JLab Audio Project" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Role</h4>
+                        <p>Data Analyst & Marketing Strategist</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Duration</h4>
+                        <p>7 months</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Company</h4>
+                        <p>JLab Audio (San Diego)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Focus Area</h4>
+                        <p>Customer Analytics & Retention Strategy</p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Project Overview</h3>
+                    <p>
+                        Worked with JLab, a San Diego-based audio company, to address the critical challenge of 
+                        <strong>increasing customer retention and converting one-time or in-person purchasers into loyal online customers</strong>. 
+                        The project focused on leveraging consumer behavior data and brand perception insights to propose 
+                        data-driven marketing strategies that would transform JLab's customer acquisition and retention approach.
+                    </p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Key Problem Statement</h4>
+                    <p>
+                        How can JLab reduce the number of one-time and in-person purchasers and convert them into repeat, 
+                        loyal customers purchasing through their official website?
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Data Analysis & Methodology</h3>
+                    <ul>
+                        <li><strong>Multi-Platform Data Integration:</strong> Consolidated purchasing records from Shopify, TikTok, in-person retail, and website data sources</li>
+                        <li><strong>Data Cleaning & Preprocessing:</strong> Standardized customer records across platforms, handled missing values, and resolved duplicate entries</li>
+                        <li><strong>Customer Segmentation:</strong> Developed comprehensive segmentation framework based on order price, purchase frequency, and product preferences</li>
+                        <li><strong>Behavioral Analysis:</strong> Analyzed seasonal purchasing trends, repeat customer behaviors, and regional product preferences</li>
+                        <li><strong>Statistical Modeling:</strong> Applied cohort analysis and RFM (Recency, Frequency, Monetary) modeling to identify high-value customer segments</li>
+                    </ul>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Key Insights & Findings</h3>
+                    <ul>
+                        <li><strong>Customer Segmentation:</strong> Identified 5 distinct customer segments with varying lifetime values and purchase behaviors</li>
+                        <li><strong>Seasonal Trends:</strong> Discovered significant seasonal purchasing patterns beyond traditional holidays, revealing untapped revenue opportunities</li>
+                        <li><strong>Regional Preferences:</strong> Mapped product preferences by geography, identifying regional market opportunities</li>
+                        <li><strong>Channel Performance:</strong> Analyzed conversion rates across different sales channels, identifying optimization opportunities</li>
+                        <li><strong>Customer Journey Mapping:</strong> Traced customer paths from first purchase to repeat purchases, identifying drop-off points</li>
+                        <li><strong>Product Affinity Analysis:</strong> Discovered complementary product relationships for bundling strategies</li>
+                    </ul>
+                </div>
+                
+                
+                <div class="project-section">
+                    <h3>Actionable Strategy Implementation</h3>
+                    <ul>
+                        <li><strong>Personalized Product Recommendations:</strong> Developed recommendation engine based on purchase history and geographic preferences, increasing cross-sell opportunities by 40%</li>
+                        <li><strong>Strategic Product Bundling:</strong> Created data-driven bundles (e.g., Go Air Pop with accessories) based on purchase affinity analysis, improving average order value</li>
+                        <li><strong>Email Marketing Optimization:</strong> Redesigned Klaviyo email flows using segmentation data, resulting in 25% higher open rates and 18% better click-through rates</li>
+                        <li><strong>Customer Lifecycle Campaigns:</strong> Implemented targeted campaigns for each customer segment, improving retention rates across all segments</li>
+                    </ul>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Technical Skills & Tools</h3>
+                    <div class="project-tech" style="justify-content: flex-start; margin-top: 1rem;">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Customer Segmentation</span>
+                        <span class="tech-tag">RFM Modeling</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Statistical Analysis</span>
+                    </div>
+                </div>
+                
+    
+                
+                <div class="project-section">
+                    <h3>Key Learnings & Skills Developed</h3>
+                    <p>
+                        This project enhanced my expertise in customer analytics and data-driven marketing strategy. 
+                        I developed advanced skills in multi-platform data integration, customer segmentation, and 
+                        predictive modeling while learning to translate complex analytical insights into actionable 
+                        business strategies. 
+                    </p>
+            
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Rita Xiong. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="Kaggle">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+                <a href="#" aria-label="Medium">
+                    <i class="fab fa-medium"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html> 

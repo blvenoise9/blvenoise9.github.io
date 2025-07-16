@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprogram Biosciences - Rita Xiong Portfolio</title>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-detail {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .project-hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.8);
+            border-radius: 12px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .meta-item h4 {
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .meta-item p {
+            color: #d1d5db;
+            margin: 0;
+        }
+        
+        .project-section {
+            margin-bottom: 3rem;
+        }
+        
+        .project-section h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .project-section p, .project-section li {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .project-section ul {
+            padding-left: 2rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: #2563eb;
+            transform: translateX(-5px);
+        }
+        
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .project-content {
+                padding: 2rem 1.5rem;
+                margin: 0 20px;
+            }
+            
+            .back-button {
+                left: 20px;
+                padding: 10px 16px;
+            }
+            
+            .project-hero-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Star Background -->
+    <div class="star-background"></div>
+
+    <!-- Back Button -->
+    <a href="index.html#projects" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="section-title">Reprogram Biosciences</h1>
+                <p class="section-subtitle">Commercialization Strategy for mRNA-based Solid Tumor Therapeutics</p>
+                <img src="images/reprogram_bioscience.png" alt="Reprogram Biosciences Project" class="project-hero-image">
+            </div>
+            
+            <div class="project-content">
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Role</h4>
+                        <p>Venture Fellow, Go-to-Market Strategy Analyst</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Duration</h4>
+                        <p>3 months</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Industry</h4>
+                        <p>Biotechnology</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Focus Area</h4>
+                        <p>Market Research & Product Strategy</p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Project Overview</h3>
+                    <p>
+                        Reprogram Biosciences is a cutting-edge biotech startup developing innovative mRNA-based therapeutics 
+                        for solid tumor treatment. As a member of the commercialization strategy team, I conducted in-depth market 
+                        research and developed strategic recommendations to position their therapeutic platform within the competitive 
+                        oncology landscape. I worked alongside a cross-functional team of 3 medical students/PhDs, 2 MBA candidates, and the 
+                        company founder to align clinical insights with business strategy.
+                    </p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Key Challenge</h4>
+                    <p>
+                        How to effectively position a novel mRNA therapeutic platform in a crowded oncology market while 
+                        identifying the most promising indication areas and go-to-market strategies.
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Methodology & Approach</h3>
+                    <ul>
+                        <li><strong>Market Landscape Analysis:</strong> Conducted extensive research on the $150B+ global oncology market, analyzing competitor positioning, treatment paradigms, and unmet medical needs</li>
+                        <li><strong>Indication Prioritization:</strong> Developed a systematic framework to evaluate potential tumor indications based on market size, competitive landscape, and technical feasibility</li>
+                        <li><strong>Stakeholder Mapping:</strong> Identified and analyzed key stakeholders including KOLs, regulatory bodies, payers, and potential strategic partners</li>
+                        <li><strong>Competitive Intelligence:</strong> Deep-dive analysis of 10+ competing platforms in the mRNA therapeutics space</li>
+                        <li><strong>Financial Modeling:</strong> Built comprehensive models projecting market penetration and revenue potential across different scenarios</li>
+                    </ul>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Key Findings & Insights</h3>
+                    <ul>
+                        <li>Identified that clinical skepticism and lack of clear biomarker data are slowing the adoption of novel mRNA-based reprogramming therapies for solid tumors.
+                        <li>Uncovered high-potential white space in TNBC, ovarian, and NSCLC indications for personalized mRNA therapeutics,
+                             where emerging biomarker targeting strategies remain underleveraged in current therapeutic pipelines.</li>
+                        <li>Found that mRNA-based immune reprogramming is most commercially viable when positioned as a complement to existing checkpoint inhibitors.
+                            This led to a recommendation to pursue co-development or partnership opportunities with immuno-oncology players for expanded clinical trials.</li>
+                        <li>Mapped the value chain of clinical translation and identified regulatory, manufacturing, and IP challenges unique to personalized mRNA therapies.
+                            Proposed a phased market entry model starting with orphan indications and modular platform demonstrations.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Impact & Results</h4>
+                    <p>
+                        The strategic recommendations directly influenced the company's R&D prioritization, and market research framework was adopted for 
+                        ongoing competitive intelligence and strategic planning.
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Tools & Technologies Used</h3>
+                    <div class="project-tech" style="justify-content: flex-start; margin-top: 1rem;">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Market Research</span>
+                        <span class="tech-tag">Product Strategy</span>
+                        <span class="tech-tag">Competitive Analysis</span>
+                        <span class="tech-tag">PowerPoint</span>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Key Learnings</h3>
+                    <p>
+                        This project deepened my understanding of the biotech commercialization landscape and the critical 
+                        importance of market-driven product development. I learned to balance scientific innovation with 
+                        commercial viability, and developed expertise in navigating complex regulatory environments. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Rita Xiong. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="Kaggle">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+                <a href="#" aria-label="Medium">
+                    <i class="fab fa-medium"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html> 

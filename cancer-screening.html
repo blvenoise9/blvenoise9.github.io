@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Screening Reminder System - Rita Xiong</title>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-detail {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .project-hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 2rem auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .meta-item h4 {
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .meta-item p {
+            color: #d1d5db;
+            margin: 0;
+        }
+        
+        .project-section {
+            margin-bottom: 3rem;
+        }
+        
+        .project-section h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .project-section p, .project-section li {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .project-section ul {
+            padding-left: 2rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: #2563eb;
+            transform: translateX(-5px);
+        }
+        
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            color: #e5e7eb;
+        }
+        
+        .contributions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .contribution-card {
+            background: rgba(17, 24, 39, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contribution-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+        
+        .contribution-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .contribution-card h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        
+        .prototype-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            margin: 2rem 0;
+        }
+        
+        .prototype-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .feature-item h4 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .project-content {
+                padding: 2rem 1.5rem;
+                margin: 0 20px;
+            }
+            
+            .back-button {
+                left: 20px;
+                padding: 10px 16px;
+            }
+            
+            .project-hero-image {
+                height: 250px;
+            }
+            
+            .prototype-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Star Background -->
+    <div class="star-background"></div>
+
+    <!-- Back Button -->
+    <a href="index.html#projects" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="section-title">Cancer Screening Reminder System</h1>
+                <p class="section-subtitle">Data-Driven Healthcare Analytics for Early Detection</p>
+                <img src="images/cancer-screening.png" alt="Cancer Screening Reminder System" class="project-hero-image">
+            </div>
+            
+            <div class="project-content">
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Project Type</h4>
+                        <p>Public Health Analytics</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Team Size</h4>
+                        <p>4 members</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Domain</h4>
+                        <p>Healthcare & Data Science</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Tools</h4>
+                        <p>Python, Pandas, Jupyter</p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Project Overview</h3>
+                    <p>
+                        Designed a data-driven reminder system to promote timely cancer screening based on individual risk factors such as age, sex, and ethnicity. The project focused on improving screening rates by tailoring reminders to underserved populations using public health data.
+                    </p>
+                    <p>
+                        This project highlights the use of data analytics to support early cancer detection and reduce disparities in preventive healthcare access, particularly focusing on medically underserved communities.
+                    </p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Key Challenge</h4>
+                    <p>
+                        How to leverage public health data to create personalized cancer screening reminders that address health disparities and improve early detection rates in underserved populations?
+                    </p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Key Contributions</h3>
+                    <div class="contributions-grid">
+                        <div class="contribution-card">
+                            <div class="contribution-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Data Analysis</h4>
+                            <p>
+                                Analyzed California Cancer Registry datasets on cancer incidence by demographic groups to identify patterns and risk factors.
+                            </p>
+                        </div>
+                        <div class="contribution-card">
+                            <div class="contribution-icon">
+                                <i class="fas fa-broom"></i>
+                            </div>
+                            <h4>Data Processing</h4>
+                            <p>
+                                Processed and cleaned data to identify high-risk age groups for breast, cervical, colorectal, and lung cancer screenings.
+                            </p>
+                        </div>
+                        <div class="contribution-card">
+                            <div class="contribution-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Algorithm Development</h4>
+                            <p>
+                                Developed logic for personalized screening recommendations based on national guidelines (USPSTF).
+                            </p>
+                        </div>
+                        <div class="contribution-card">
+                            <div class="contribution-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h4>UI Foundation</h4>
+                            <p>
+                                Built the foundation for a user interface that generates age-specific screening reminders.
+                            </p>
+                        </div>
+                        <div class="contribution-card">
+                            <div class="contribution-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h4>Health Equity Focus</h4>
+                            <p>
+                                Focused on addressing health disparities by prioritizing reminders for medically underserved communities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <h3>Interactive Prototype</h3>
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.2rem;">Proactive Path - Cancer Screening Interface</h4>
+                        <p style="color: #d1d5db; line-height: 1.7; margin-bottom: 1.5rem;">
+                            Explore the interactive prototype that demonstrates the user interface for our cancer screening reminder system. 
+                            This prototype showcases how users can receive personalized screening recommendations based on their individual risk factors.
+                        </p>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 0.75rem 1.5rem; border-radius: 20px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                                <span style="color: #3b82f6; font-weight: 500;">
+                                    <i class="fas fa-user-cog" style="margin-right: 0.5rem;"></i>
+                                    Personalized Recommendations
+                                </span>
+                            </div>
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 0.75rem 1.5rem; border-radius: 20px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                                <span style="color: #3b82f6; font-weight: 500;">
+                                    <i class="fas fa-mobile-alt" style="margin-right: 0.5rem;"></i>
+                                    Mobile-First Design
+                                </span>
+                            </div>
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 0.75rem 1.5rem; border-radius: 20px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                                <span style="color: #3b82f6; font-weight: 500;">
+                                    <i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>
+                                    Reminder System
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Figma Prototype Embed -->
+                    <div class="prototype-container">
+                        <iframe 
+                            style="border: none; width: 100%; height: 100%;" 
+                            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FLWaqiWKDZETI0VQyl6dJdJ%2FProactive-Path%3Fnode-id%3D158-260%26p%3Df%26t%3D3UPbQeDSLiO75uqc-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26page-id%3D0%253A1%26starting-point-node-id%3D158%253A260"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <!-- Prototype Features -->
+                    <div class="prototype-features">
+                        <div class="feature-item">
+                            <div style="background: rgba(59, 130, 246, 0.2); padding: 0.75rem; border-radius: 8px; flex-shrink: 0;">
+                                <i class="fas fa-clipboard-check" style="color: #3b82f6; font-size: 1.2rem;"></i>
+                            </div>
+                            <div>
+                                <h4>Risk Assessment</h4>
+                                <p style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;">Interactive questionnaire to assess individual cancer risk factors</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div style="background: rgba(59, 130, 246, 0.2); padding: 0.75rem; border-radius: 8px; flex-shrink: 0;">
+                                <i class="fas fa-bell" style="color: #3b82f6; font-size: 1.2rem;"></i>
+                            </div>
+                            <div>
+                                <h4>Smart Reminders</h4>
+                                <p style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;">Automated notifications based on screening schedules and guidelines</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div style="background: rgba(59, 130, 246, 0.2); padding: 0.75rem; border-radius: 8px; flex-shrink: 0;">
+                                <i class="fas fa-chart-line" style="color: #3b82f6; font-size: 1.2rem;"></i>
+                            </div>
+                            <div>
+                                <h4>Progress Tracking</h4>
+                                <p style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;">Visual dashboard to monitor screening history and upcoming appointments</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div style="text-align: center; padding: 2rem; background: rgba(59, 130, 246, 0.1); border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.2); margin: 2rem 0;">
+                        <h4 style="color: #ffffff; margin-bottom: 1rem;">Experience the Full Prototype</h4>
+                        <p style="color: #d1d5db; margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            Click through the interactive prototype to see how the cancer screening reminder system guides users through personalized health recommendations.
+                        </p>
+                        <a href="https://www.figma.com/proto/LWaqiWKDZETI0VQyl6dJdJ/Proactive-Path?node-id=158-260&p=f&t=3UPbQeDSLiO75uqc-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=158%3A260" 
+                           target="_blank" 
+                           class="btn btn-primary" 
+                           style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <i class="fab fa-figma"></i>
+                            View Full Prototype in Figma
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Code Implementation</h3>
+                    <p>Sample screening logic demonstrating the personalized recommendation algorithm:</p>
+                    <div class="code-block">
+                        <code># Personalized screening recommendation logic
+def generate_screening_recommendations(age, sex, ethnicity, risk_factors):
+    recommendations = []
+    
+    # Breast cancer screening
+    if sex == 'female' and age >= 40:
+        if age >= 50 or 'family_history' in risk_factors:
+            recommendations.append({
+                'type': 'breast_cancer',
+                'test': 'mammography',
+                'frequency': 'annual',
+                'priority': 'high' if ethnicity in high_risk_groups else 'standard'
+            })
+    
+    # Cervical cancer screening
+    if sex == 'female' and 21 <= age <= 65:
+        recommendations.append({
+            'type': 'cervical_cancer',
+            'test': 'pap_smear',
+            'frequency': 'every_3_years',
+            'priority': 'high' if ethnicity in underserved_groups else 'standard'
+        })
+    
+    return recommendations</code>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="https://colab.research.google.com/drive/1fdGL-RDmj4mRwZk03XSyGvwA6SIrpOlL#scrollTo=wdR-oWb9Vdve&line=1&uniqifier=1" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-google"></i>
+                            View Full Code on Google Colab
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Tools & Technologies Used</h3>
+                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start; margin-top: 1rem;">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Jupyter Notebook</span>
+                        <span class="tech-tag">Data Analysis</span>
+                        <span class="tech-tag">Public Health</span>
+                        <span class="tech-tag">Figma</span>
+                        <span class="tech-tag">UI/UX Design</span>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Impact & Learning</h4>
+                    <p>
+                        This project demonstrates how data analytics can be leveraged to support early cancer detection and reduce disparities in preventive healthcare access. Through this work, I gained experience in public health data analysis, algorithm development for healthcare applications, and designing user-centered health technology solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rita Xiong. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="Kaggle">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+                <a href="#" aria-label="Medium">
+                    <i class="fab fa-medium"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEG-Based ADHD Classification - Rita Xiong Portfolio</title>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-detail {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .project-hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.8);
+            border-radius: 12px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .meta-item h4 {
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .meta-item p {
+            color: #d1d5db;
+            margin: 0;
+        }
+        
+        .project-section {
+            margin-bottom: 3rem;
+        }
+        
+        .project-section h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .project-section p, .project-section li {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .project-section ul {
+            padding-left: 2rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: #2563eb;
+            transform: translateX(-5px);
+        }
+        
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .results-table th, .results-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .results-table th {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .results-table td {
+            color: #d1d5db;
+        }
+        
+        .results-table tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            color: #e5e7eb;
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .methodology-item {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .methodology-item h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .project-content {
+                padding: 2rem 1.5rem;
+                margin: 0 20px;
+            }
+            
+            .back-button {
+                left: 20px;
+                padding: 10px 16px;
+            }
+            
+            .project-hero-image {
+                height: 250px;
+            }
+            
+            .results-table {
+                font-size: 0.9rem;
+            }
+            
+            .results-table th, .results-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Star Background -->
+    <div class="star-background"></div>
+
+    <!-- Back Button -->
+    <a href="index.html#projects" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="section-title">EEG-Based ADHD Classification</h1>
+                <p class="section-subtitle">Machine Learning for Objective Neurodiagnostics Using Traditional ML Models</p>
+                <img src="images/eeg-adhd.png" alt="EEG-ADHD Classification Project" class="project-hero-image">
+            </div>
+            
+            <div class="project-content">
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Project Type</h4>
+                        <p>Academic Research</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Domain</h4>
+                        <p>Neuroscience & Machine Learning</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Best Model</h4>
+                        <p>SVM (80.6% Accuracy)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Duration</h4>
+                        <p>4 months</p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Project Overview</h3>
+                    <p>
+                        This project explores the use of <strong>traditional machine learning models</strong> to classify 
+                        Attention Deficit Hyperactivity Disorder (ADHD) versus neurotypical controls using 
+                        <strong>electroencephalogram (EEG) signals</strong>. The goal is to develop accessible, objective 
+                        tools to support clinical diagnoses, which are currently reliant on subjective behavioral assessments.
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <h4>Research Motivation</h4>
+                        <p>
+                            ADHD diagnoses are often based on subjective reports, leading to potential misdiagnosis. 
+                            EEG offers a <strong>non-invasive, cost-effective</strong> approach to capture neural signatures. 
+                            This project investigates whether <strong>EEG-derived features</strong> like theta/beta ratio, 
+                            alpha power, and slow wave activity can serve as reliable biomarkers to distinguish ADHD 
+                            from neurotypical individuals.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Dataset & Preprocessing</h3>
+                    
+                    <h4>Data Source</h4>
+                    <p>IEEE dataset containing EEG recordings from children aged 7–12 years, with balanced representation of ADHD and neurotypical control groups.</p>
+                    
+                    <div class="methodology-grid">
+                        <div class="methodology-item">
+                            <h4><i class="fas fa-brain" style="color: #3b82f6; margin-right: 0.5rem;"></i>EEG Setup</h4>
+                            <p>19 EEG channels (Fz, Cz, Pz, C3, T3, etc.) recorded at 128 Hz sampling rate using standard 10-20 electrode placement system.</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4><i class="fas fa-filter" style="color: #3b82f6; margin-right: 0.5rem;"></i>Signal Processing</h4>
+                            <p>Bandpass filtering (1–50 Hz), Independent Component Analysis (ICA) for artifact removal, and 2-second epoching with 50% overlap.</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4><i class="fas fa-chart-line" style="color: #3b82f6; margin-right: 0.5rem;"></i>Feature Extraction</h4>
+                            <p>Three neurophysiologically relevant feature types: Theta/Beta Ratio, Alpha Power (8–13 Hz), and Slow Wave Activity (<12.5 Hz).</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4><i class="fas fa-cogs" style="color: #3b82f6; margin-right: 0.5rem;"></i>Data Quality</h4>
+                            <p>Rigorous quality control including artifact detection, channel validation, and statistical outlier removal to ensure clean datasets.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Machine Learning Approach</h3>
+                    <p>We implemented and compared three traditional machine learning models, each chosen for their proven effectiveness in biomedical signal classification:</p>
+                    
+                    <div class="methodology-grid">
+                        <div class="methodology-item">
+                            <h4><i class="fas fa-vector-square" style="color: #3b82f6; margin-right: 0.5rem;"></i>Support Vector Machine (SVM)</h4>
+                            <p>Linear and RBF kernels for both linear and non-linear pattern recognition, with hyperparameter optimization via grid search.</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4><i class="fas fa-tree" style="color: #3b82f6; margin-right: 0.5rem;"></i>Random Forest</h4>
+                            <p>Ensemble method providing feature importance insights and robust performance across different feature types.</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4><i class="fas fa-users" style="color: #3b82f6; margin-right: 0.5rem;"></i>K-Nearest Neighbors (KNN)</h4>
+                            <p>Instance-based learning with optimized k-value selection and distance metric evaluation for local pattern recognition.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Model Validation</h4>
+                    <ul>
+                        <li><strong>Cross-Validation:</strong> 5-fold stratified cross-validation to ensure robust performance estimates</li>
+                        <li><strong>Hyperparameter Tuning:</strong> Grid search optimization for each model's parameters</li>
+                        <li><strong>Performance Metrics:</strong> Accuracy, precision, recall, and F1-score evaluation</li>
+                        <li><strong>Statistical Significance:</strong> Multiple runs with different random seeds for statistical validation</li>
+                    </ul>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Results & Performance Analysis</h3>
+                    
+                    <div class="highlight-box">
+                        <h4>Key Performance Summary</h4>
+                        <p>
+                            <strong>Best Result:</strong> SVM with Theta/Beta Ratio features achieved <strong>80.6% accuracy</strong> 
+                            and <strong>77% precision</strong>, demonstrating strong potential for clinical application. 
+                            This performance significantly exceeds chance level (50%) and approaches clinically relevant thresholds.
+                        </p>
+                    </div>
+                    
+                    <h4>Feature-Specific Results</h4>
+                    
+                    <h5>Theta/Beta Ratio Classification (Best Performance)</h5>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>Precision</th>
+                                <th>Clinical Relevance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KNN</td>
+                                <td>73.2%</td>
+                                <td>75%</td>
+                                <td>Good baseline performance</td>
+                            </tr>
+                            <tr>
+                                <td>Random Forest</td>
+                                <td>77.3%</td>
+                                <td>71%</td>
+                                <td>Strong feature importance insights</td>
+                            </tr>
+                            <tr style="background: rgba(59, 130, 246, 0.1);">
+                                <td><strong>SVM</strong></td>
+                                <td><strong>80.6%</strong></td>
+                                <td><strong>77%</strong></td>
+                                <td><strong>Best overall performance</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h5>Alpha Power Classification</h5>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>Precision</th>
+                                <th>Performance Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KNN</td>
+                                <td>63.0%</td>
+                                <td>60%</td>
+                                <td>Moderate discriminative power</td>
+                            </tr>
+                            <tr>
+                                <td>Random Forest</td>
+                                <td>60.6%</td>
+                                <td>54%</td>
+                                <td>Lower performance on alpha features</td>
+                            </tr>
+                            <tr>
+                                <td>SVM</td>
+                                <td>68.0%</td>
+                                <td>67%</td>
+                                <td>Most consistent across features</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h5>Slow Wave Activity Classification</h5>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>Precision</th>
+                                <th>Clinical Insights</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KNN</td>
+                                <td>62.7%</td>
+                                <td>57%</td>
+                                <td>Captures local neural patterns</td>
+                            </tr>
+                            <tr>
+                                <td>Random Forest</td>
+                                <td>67.6%</td>
+                                <td>69%</td>
+                                <td>Good precision for slow waves</td>
+                            </tr>
+                            <tr>
+                                <td>SVM</td>
+                                <td>68.3%</td>
+                                <td>67%</td>
+                                <td>Balanced classification performance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Key Findings & Insights</h3>
+                    
+                    <div class="findings-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                        <div class="finding-card" style="background: rgba(17, 24, 39, 0.8); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h4 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-trophy" style="margin-right: 0.5rem;"></i>Best Performance</h4>
+                            <p>SVM with Theta/Beta Ratio features achieved the highest accuracy (80.6%), demonstrating the clinical relevance of this biomarker.</p>
+                        </div>
+                        <div class="finding-card" style="background: rgba(17, 24, 39, 0.8); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h4 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-chart-bar" style="margin-right: 0.5rem;"></i>Feature Ranking</h4>
+                            <p>Theta/Beta Ratio > Slow Wave Activity > Alpha Power in terms of discriminative power for ADHD classification.</p>
+                        </div>
+                        <div class="finding-card" style="background: rgba(17, 24, 39, 0.8); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h4 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-robot" style="margin-right: 0.5rem;"></i>Model Consistency</h4>
+                            <p>SVM demonstrated the most consistent performance across all feature types, making it the most reliable classifier.</p>
+                        </div>
+                        <div class="finding-card" style="background: rgba(17, 24, 39, 0.8); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h4 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-brain" style="margin-right: 0.5rem;"></i>Neural Signatures</h4>
+                            <p>Frontal and central EEG channels showed the highest discriminative power, aligning with neurobiological understanding of ADHD.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>Clinical Significance</h4>
+                        <p>
+                            The 80.6% accuracy achieved with traditional machine learning models demonstrates that EEG-based 
+                            biomarkers can effectively support ADHD diagnosis. This performance level approaches the reliability 
+                            needed for clinical decision support tools, potentially reducing diagnostic subjectivity and improving 
+                            access to objective assessment methods.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Tools & Technologies</h3>
+                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start; margin-top: 1rem;">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">SciPy</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">EEG Analysis</span>
+                        <span class="tech-tag">Signal Processing</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Cross-Validation</span>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Future Directions & Clinical Impact</h3>
+                    
+                    <h4>Immediate Next Steps</h4>
+                    <ul>
+                        <li><strong>Feature Enhancement:</strong> Explore connectivity measures, nonlinear features, and time-frequency analysis for improved discrimination</li>
+                        <li><strong>Deep Learning Integration:</strong> Compare traditional models with CNN, LSTM, and EEGNet architectures for potential performance gains</li>
+                        <li><strong>Dataset Expansion:</strong> Address current limitations in dataset size and demographic diversity</li>
+                    </ul>
+                    
+                    <h4>Clinical Applications</h4>
+                    <ul>
+                        <li><strong>Diagnostic Support:</strong> Develop screening tools to supplement traditional behavioral assessments</li>
+                        <li><strong>Treatment Monitoring:</strong> Track therapeutic response through EEG biomarker changes</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <h4>Broader Impact</h4>
+                        <p>
+                            This research contributes to the development of objective, data-driven diagnostic tools for ADHD, 
+                            potentially improving diagnostic accuracy and accessibility. The methodology can be extended to other 
+                            neuropsychiatric conditions, advancing the field of computational psychiatry and precision medicine.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="project-section">
+                    <h3>References & Resources</h3>
+                    <div style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                        <h4 style="color: #3b82f6; margin-bottom: 1rem;">Scientific Literature</h4>
+                        <ul style="margin: 0;">
+                            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11763499/" target="_blank" style="color: #3b82f6;">PMC Article: EEG-Based ADHD Classification Methods</a></li>
+                            <li><a href="https://pubmed.ncbi.nlm.nih.gov/36996836/" target="_blank" style="color: #3b82f6;">PubMed Study: Advanced EEG Classification Approaches</a></li>
+                            <li><a href="https://docs.google.com/document/d/1kxV0pX02JpyzJjEk_f9jDVt1eXFOx06ehTi7OdX11mE/edit?usp=sharing" target="_blank" style="color: #3b82f6;">Literature Review: Comprehensive Analysis Notes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Rita Xiong. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="Kaggle">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+                <a href="#" aria-label="Medium">
+                    <i class="fab fa-medium"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html> 
